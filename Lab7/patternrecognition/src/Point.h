@@ -22,7 +22,6 @@ class Point {
 public:
 
     Point() = delete;
-
     Point(unsigned int _x, unsigned int _y) : x(_x), y(_y){}
 
     /**
@@ -33,12 +32,10 @@ public:
      * If the line between the points is vertical positive infinity is returned
      */
     double slopeTo(const Point& p) const;
-
     /**
      * Draw point to scene
      */
     void draw(QGraphicsScene* scene) const;
-
     /**
      * Draw line from this point to p to scene
      */
