@@ -26,3 +26,6 @@
 
    När push_back har O(1) i tidskomplexitet tog det cirka 19 sekunder för simulationen att köra.
    Vid O(N) i tidskomplexitet så avbröts körningen då den tog över 300+ sekunder att köra.
+   Detta då increaseCapacity metoden ökar capacity med 4 så resulterar det i tidskomplexiteten O(N)
+   medan när ökningen av kapaciteten sker med en dubbleringen så blir istället tidskomplexiteten konstant
+   det vill säga O(1).
