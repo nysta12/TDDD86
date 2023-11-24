@@ -44,10 +44,10 @@ public:
 private:
 
     // returns the index of the left child
-    int getLeftChild(const unsigned i) const;
+    unsigned getLeftChild(const unsigned i) const;
 
     // returns the index of the parent
-    int getParent(const unsigned i) const;
+    int getParent(const int i) const;
 
     // check if the current position is a leaf or not
     // that is if it has a child or children
@@ -55,18 +55,18 @@ private:
 };
 
 template <typename T, typename C>
-int MyPriorityQueue<T,C>::getLeftChild(const unsigned i) const{
+unsigned MyPriorityQueue<T,C>::getLeftChild(const unsigned i) const{
     return (2 * i) + 1;
 }
 
 template <typename T, typename C>
-int MyPriorityQueue<T,C>::getParent(const unsigned i) const{
+int MyPriorityQueue<T,C>::getParent(const int i) const{
     return (i - 1) / 2;
 }
 
 template <typename T, typename C>
 bool MyPriorityQueue<T,C>::isLeaf(const unsigned index){
-    return (2*index + 1) >= vector_array.size() && index < vector_array.size();
+    return (index >= vector_array.size()/2) && (index < vector_array.size());
 }
 
 template <typename T, typename C>
@@ -81,7 +81,7 @@ void MyPriorityQueue<T,C>::push(const T& t){
 
         while(strictly_larger_operator(vector_array[parent], t)){
             // t gets swapped with the parent if it has higher priority
-            std::swap(vector_array[i],vector_array[parent]);
+            std::swap(vector_array[i], vector_array[parent]);
 
             // update parent
             i = parent;
@@ -101,7 +101,7 @@ void MyPriorityQueue<T,C>::pop(){
 
         // swaps the values of the two positions, the one with the highest
         // and the last element, then removes the element with the highest priority
-        std::swap(vector_array[vector_array.size()-1], vector_array[0]);
+        std::swap(vector_array[vector_array.size() - 1], vector_array[0]);
         vector_array.pop_back();
 
         int i = 0;
