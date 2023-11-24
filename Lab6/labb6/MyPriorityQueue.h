@@ -1,8 +1,10 @@
-// This is the second .h file you will edit
-// We have provided a skeleton for you,
-// but you must finish it as described in the spec.
-// Also remove these comments here and add your own, as well as on the members.
-// TODO: remove this comment header
+/*
+* Victor Nyström, vicny135.
+*
+* This file contains the template class MyPriorityQueue.
+* The file contains both declarations and definitions
+* of all the methods for the class template.
+*/
 
 #ifndef MY_PRIORITY_QUEUE_H
 #define MY_PRIORITY_QUEUE_H

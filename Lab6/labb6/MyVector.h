@@ -109,12 +109,10 @@ MyVector<T>& MyVector<T>::operator =(const MyVector& other){
 
 template<typename T>
 void MyVector<T>::push_back(const T& e){
-    // timecomplexity: O(1)
     if(capacity <= size()){
         // if capacity is met, call method to increase the capacity
         increaseCapacity();
     }
-
     storage[size()] = e;
     numberOfElements++;
 }
