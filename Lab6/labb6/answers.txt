@@ -1,0 +1,28 @@
+
+---Del A---
+
+1. eventQueue har funktionen att köa event och sedan behandla eventen när det är dags, event såsom spawnEvent, harvestEvent, hatchEvent, matureEvent och deathEvent.
+   allTheFish har funktionen att det är en vektor med pekare mot alla fiskar i omlopp. Variabler används i metoderna run, harvestTonnageEvent, scheduleEvent, destructorn och addFish.
+   I run metoden så används variabeln eventQueue för att hålla reda på vilket event att köra näst. I harvestTonnageEvent metoden så används variabeln allTheFish för att behandla fiskarna,
+   det vill säga om en fisk är död och inte redan fångad så raderas fisken, om fisken uppfyller kraven för att fångas så fångas den och så vidare. I scheduleEvent metoden så läggs ett nytt
+   event till i eventQueue och i addFish metoden så läggs en ny pekare till en fisk till i allTheFish.
+
+
+2. Tre olika par av (LANDING, MIN_CATCHABLE_AGE) där fiskbeståndet inte kollapsar:
+   De olika paren som har testats är (80000, 600), (40000, 400), (100000, 700). Paren är baserade på att en ökning av LANDING med 10000 resulterar i en ökning av MIN_CATCHABLE_AGE på 50,
+   detsamma gäller för en minskning. Hypotesen är följande, att då LANDING är för hög så fångas det in alldeles för mycket fisk och beståndet blir att kollapsa.
+   Är MIN_CATCHABLE_AGE dock för litet så kommer antalet fiskar för att skapa nya att bli för få och beståndet blir att kollapsa på grund av det istället.
+
+
+3. Fish och Event allokeras dynamiskt i Event.cpp. Fish allokeras dynamiskt i hatchEvent och minnet befrias i metoderna för spawnEvent() samt i metoderna för matureEvent() och deathEvent() i Event.cpp.
+   Det görs genom att köra, delete afish och afish = nullptr. Event allokeras dynamiskt i harvestEvent, matureEvent, hatchEvent, printEvent och spawnEvent i metoden processEvent för respektive i Event.cpp.
+   Event allokeras också dynamiskt i metoden main i main.cpp. Minnet befrias i metoden run i Simulation.cpp genom att köra delete nextEvent.
+
+   När valgrind kördes så uppstod och visades det inga minnesläckor.
+
+
+
+---Del C---
+
+   När push_back har O(1) i tidskomplexitet tog det cirka 19 sekunder för simulationen att köra.
+   Vid O(N) i tidskomplexitet så avbröts körningen då den tog över 300+ sekunder att köra.
