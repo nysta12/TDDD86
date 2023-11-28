@@ -1,7 +1,12 @@
-// This is the CPP file you will edit and turn in.
-// Also remove these comments here and add your own, along with
-// comments on every function and on complex code sections.
-// TODO: write comment header for this file; remove this comment
+/*
+ * TDDD86 Trailblazer
+ * This file contains functions for the algorithms depthFirstSearch,
+ * breadthFirstSearch, dijkstrasAlgorithm and aStar that are used
+ * to find a route from a selected starting vertex to a
+ * selected finishing vertex.
+ *
+ * Author: Victor Nyström
+ */
 
 #include "costs.h"
 #include "trailblazer.h"
@@ -19,11 +24,13 @@ vector<Node *> depthFirstSearch(BasicGraph& graph, Vertex* start, Vertex* end){
     graph.resetData();
 
     vector<Vertex*> path;
+
+    // stack for storing vertexes that are being checked
     Stack<Vertex*> s;
     s.push(start);
 
     while(!s.isEmpty()){
-        Vertex* current = s.peek();
+        Vertex* current = s.top();
         current->setColor(GREEN);
         current->visited = true;
         if(current == end){
@@ -39,7 +46,7 @@ vector<Node *> depthFirstSearch(BasicGraph& graph, Vertex* start, Vertex* end){
             }
         }
         if(!neighbours){
-            s.top()->setColor(GRAY);
+            current->setColor(GRAY);
             s.pop();
         }
     }
@@ -55,7 +62,6 @@ vector<Node *> depthFirstSearch(BasicGraph& graph, Vertex* start, Vertex* end){
     path.push_back(start);
     reverse(path.begin(), path.end());
 
-
     return path;
 }
 
@@ -63,6 +69,8 @@ vector<Node *> depthFirstSearch(BasicGraph& graph, Vertex* start, Vertex* end){
 vector<Node *> breadthFirstSearch(BasicGraph& graph, Vertex* start, Vertex* end){
     graph.resetData();
     vector<Vertex*> path;
+
+    // queue for storing vertexes that are being checked
     Queue<Vertex*> q;
 
     start->visited = true;
