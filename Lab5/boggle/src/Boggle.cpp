@@ -1,8 +1,9 @@
-// This is the .cpp file you will edit and turn in.
-// We have provided a minimal skeleton for you,
-// but you must finish it as described in the spec.
-// Also remove these comments here and add your own.
-// TODO: remove this comment header and replace it with your own
+/*
+ * TDDD86 Boggle
+ * This file contains the implementation of the Boggle class
+ *
+ * Author: Victor Nyström
+ */
 
 #include <sstream>
 #include "Boggle.h"
@@ -46,12 +47,13 @@ void Boggle::randomBoard(){
     for(int row = 0; row < board.numRows(); row++){
         for(int col = 0; col < board.numCols(); col++){
 
-            // gets a char from a random side from a cube
+            // gets a char from the cube
             char c = rollDice(CUBES[i]);
 
             // places the char on the board
             board.set(row, col, c);
 
+            // next cube
             i++;
         }
     }
@@ -108,7 +110,7 @@ bool Boggle::checkWordInFoundWords(const string &word){
     return foundWords.contains(word);
 }
 
-void Boggle::findWord(const string &word, string s, int &r, int &c){
+void Boggle::findWord(const string &word, string &s, const int r, const int c){
 
     if(word.compare(s) == 0){
         // compare the words, if the word has been found,
@@ -166,7 +168,7 @@ bool Boggle::checkWordInBoard(const string &word){
     return false;
 }
 
-void Boggle::findAllWords(string s, int &i, int &j){
+void Boggle::findAllWords(string s, const int i, const int j){
     s += board.get(i, j);
     visited.set(i, j, true);
 

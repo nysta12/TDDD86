@@ -1,8 +1,9 @@
-// This is the .h file you will edit and turn in.
-// We have provided a minimal skeleton for you,
-// but you must finish it as described in the spec.
-// Also remove these comments here and add your own, as well as on the members.
-// TODO: remove this comment header and replace it with your own
+/*
+ * TDDD86 Boggle
+ *
+ * This file declares required function prototypes that are defined in
+ * our provided Boggle.cpp.
+ */
 
 #ifndef _boggle_h
 #define _boggle_h
@@ -97,10 +98,10 @@ private:
     void setUpVisited();
 
     // recursive search algorithm for one word
-    void findWord(const string &word, string s, int &i, int &j);
+    void findWord(const string &word, string &s, const int i, const int j);
 
     // recursive search algorithm for all words
-    void findAllWords(string s, int &i, int &j);
+    void findAllWords(string s, const int i, const int j);
 };
 
 #endif

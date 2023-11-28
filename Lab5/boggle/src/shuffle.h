@@ -11,7 +11,7 @@
 
 #include "grid.h"
 #include "random.h"
-#include <vector>
+#include "vector.h"
 
 template <typename T>
 void shuffle(T* array, int length) {

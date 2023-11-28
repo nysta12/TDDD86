@@ -1,6 +1,9 @@
-// You will edit and turn in this CPP file.
-// Also remove these comments here and add your own.
-// TODO: remove this comment header and replace with your own
+/*
+ * TDDD86 Boggle
+ * This file contains the I/O stream of the program
+ *
+ * Author: Victor Nyström
+ */
 
 #include <cstdlib>
 #include <iostream>
